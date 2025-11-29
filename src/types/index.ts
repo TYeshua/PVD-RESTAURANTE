@@ -17,8 +17,18 @@ export interface CartItem extends Product {
 
 export interface Order {
   id: string;
-  tableId: string;
-  items: CartItem[];
-  status: 'open' | 'closed';
+  table_number: string;
+  status: 'pending' | 'accepted' | 'completed';
   total: number;
+  created_at: string;
+  items?: OrderItem[];
+}
+
+export interface OrderItem {
+  id: string;
+  order_id: string;
+  product_id: string;
+  quantity: number;
+  observation?: string;
+  product?: Product;
 }
